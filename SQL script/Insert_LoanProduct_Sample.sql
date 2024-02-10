@@ -1,0 +1,22 @@
+INSERT INTO LoanProducts (ProductName, Issuer, InterestRate, AnnualFee, MinimumAnnualSalary, MinimumCreditScore, RewardsProgram, IntroductoryAPR, IntroductoryPeriod, CreditLimit, GracePeriod, LatePaymentFee, ForeignTransactionFee, BalanceTransferFee, CashAdvanceFee, MinimumPaymentPercentage, TermsAndConditions)
+VALUES
+('Standard Credit Card', 'Bank A', 18.99, 0, 31100, 650, 1, 0, 0, 5000, 25, 25, 3, 3, 5, 3, 'Standard terms and conditions apply.'),
+('Gold Credit Card', 'Bank A', 16.99, 100, 36900, 700, 1, 0, 0, 10000, 30, 35, 2.5, 2.5, 4, 4, 'Gold card benefits apply.'),
+('Platinum Credit Card', 'Bank B', 14.99, 150, 36400, 720, 1, 0, 0, 20000, 30, 35, 0, 0, 3.5, 5, 'Platinum card benefits apply.'),
+('Student Credit Card', 'Bank C', 20.99, 0, 30900, 600, 1, 0, 0, 2000, 20, 20, 3.5, 3.5, 5, 3, 'Special terms for students.'),
+('Business Credit Card', 'Bank D', 18.99, 200, 31100, 680, 1, 0, 0, 30000, 35, 40, 3, 3, 5, 3, 'Business expenses only.'),
+('Cash Back Credit Card', 'Bank A', 19.99, 0, 32700, 700, 1, 0, 0, 5000, 25, 25, 3, 3, 5, 3, 'Earn cash back on purchases.'),
+('Travel Rewards Credit Card', 'Bank B', 17.99, 150, 34400, 720, 1, 0, 0, 10000, 30, 35, 2, 2, 4, 4, 'Earn travel rewards on purchases.'),
+('Secured Credit Card', 'Bank C', 22.99, 50, 18000, 580, 1, 0, 0, 3000, 20, 20, 3.5, 3.5, 5, 3, 'Requires security deposit.'),
+('Low APR Credit Card', 'Bank D', 14.99, 100, 35200, 700, 1, 0, 0, 5000, 25, 25, 3, 3, 5, 3, 'Low annual percentage rate.'),
+('Balance Transfer Credit Card', 'Bank A', 15.99, 0, 35900, 720, 1, 0, 0, 10000, 30, 35, 2, 2, 4, 4, 'Special rates for balance transfers.'),
+('Business Rewards Credit Card', 'Bank B', 18.99, 200, 32400, 680, 1, 0, 0, 30000, 35, 40, 3, 3, 5, 3, 'Earn rewards on business purchases.'),
+('Student Rewards Credit Card', 'Bank C', 21.99, 0, 25300, 600, 1, 0, 0, 2000, 20, 20, 3.5, 3.5, 5, 3, 'Rewards for students.'),
+('Small Business Credit Card', 'Bank D', 17.99, 150, 36700, 720, 1, 0, 0, 5000, 25, 25, 3, 3, 5, 3, 'Tailored for small businesses.'),
+('Premium Credit Card', 'Bank A', 12.99, 250, 40500, 750, 1, 0, 0, 50000, 40, 50, 0, 0, 3, 5, 'Premium benefits and services.'),
+('Rewards Credit Card', 'Bank B', 16.99, 100, 35500, 700, 1, 0, 0, 10000, 30, 35, 2, 2, 4, 4, 'Earn rewards on purchases.'),
+('Elite Credit Card', 'Bank C', 11.99, 300, 41000, 760, 1, 0, 0, 75000, 45, 60, 0, 0, 3.5, 5, 'Elite benefits and services.'),
+('Corporate Credit Card', 'Bank D', 19.99, 0, 34500, 700, 1, 0, 0, 50000, 40, 50, 3, 3, 5, 3, 'For corporate use only.'),
+('Business Travel Credit Card', 'Bank A', 17.99, 200, 38000, 720, 1, 0, 0, 30000, 35, 40, 2, 2, 4, 4, 'Earn travel rewards on business purchases.'),
+('No Annual Fee Credit Card', 'Bank B', 18.99, 0, 35000, 700, 1, 0, 0, 5000, 25, 25, 3, 3, 5, 3, 'No annual fee.'),
+('Prepaid Credit Card', 'Bank C', 24.99, 0, 20000, 550, 1, 0, 0, 2000, 0, 0, 3.5, 3.5, 5, 3, 'Preloaded with funds.');
