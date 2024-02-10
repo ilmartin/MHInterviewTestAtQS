@@ -1,8 +1,6 @@
 ﻿using MartinHuiLoanApplicationApi.Model;
 using MartinHuiLoanApplicationApi.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace MartinHuiLoanApplicationApi.Controllers
 {

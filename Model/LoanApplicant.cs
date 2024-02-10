@@ -1,5 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MartinHuiLoanApplicationApi.Attributes;
+using MartinHuiLoanApplicationApi.Const;
+using System.ComponentModel.DataAnnotations;
+using System.Configuration;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection.Metadata;
 
 namespace MartinHuiLoanApplicationApi.Model
 {
@@ -35,7 +39,8 @@ namespace MartinHuiLoanApplicationApi.Model
 
         // Applicant's country
         [Required]
-        [MaxLength(50)]
+        [MaxLength(2)]
+        [CountryTwoLetterISOName]
         public string Country { get; set; }
 
         // Applicant's postal code or ZIP code

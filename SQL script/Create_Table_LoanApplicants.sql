@@ -24,8 +24,8 @@ CREATE TABLE MartinHuiDatabase.dbo.LoanApplicants (
     -- Applicant's state or province
     State VARCHAR(50),
 
-    -- Applicant's country
-    Country VARCHAR(50) not null,
+    -- Applicant's country (use 2 letter iso code)
+    Country VARCHAR(2) not null,
 
     -- Applicant's postal code or ZIP code
     PostalCode VARCHAR(20) not null,
