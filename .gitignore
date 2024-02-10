@@ -365,3 +365,6 @@ FodyWeavers.xsd
 # Configuration files
 /appsettings.json
 /appsettings.Development.json
+
+# Script file
+SQL script/Create_ServiceAccount.sql
