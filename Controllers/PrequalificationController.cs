@@ -11,11 +11,13 @@ namespace MartinHuiLoanApplicationApi.Controllers
 
         private readonly ApplicationDbContext _context;
         private readonly LoanProductService _loanProductService;
+        private readonly ILogger<PrequalificationController> _logger;
 
-        public PrequalificationController(ApplicationDbContext context, LoanProductService loanProductService)
+        public PrequalificationController(ApplicationDbContext context, LoanProductService loanProductService, ILogger<PrequalificationController> logger)
         {
             _context = context;
             _loanProductService = loanProductService;
+            _logger = logger;
         }
 
         // POST: api/prequalification
@@ -26,11 +28,14 @@ namespace MartinHuiLoanApplicationApi.Controllers
             if (!ModelState.IsValid)
             {
                 var errors = ModelState.Values.SelectMany(v => v.Errors);
+                _logger.LogError("Incoming data is invalid. Errors: {errors}", errors);
                 return BadRequest(errors);
             }
+            _logger.LogInformation($"{nameof(PostPrequalification)} method called");
             if (_context.LoanApplicants == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.LoanApplicants'  is null.");
+                _logger.LogError($"LoanApplicants object from DBContext is null");
+                return Problem("Unfortunately, the system has failed to process your data. Please try again.");
             }
             try
             {
@@ -40,10 +45,22 @@ namespace MartinHuiLoanApplicationApi.Controllers
             }
             catch (Exception e)
             {
-                return Problem("Insert Entity 'ApplicationDbContext.LoanApplicants' failed");
+                _logger.LogError("Insert Entity 'ApplicationDbContext.LoanApplicants' failed, error {e}",e);
+                return Problem("Unfortunately, the system has failed to process your data. Please try again.");
             }
-
-            return Ok(_loanProductService.GetQualifiedLoanProducts(applicant));
+            try
+            {
+                var result = _loanProductService.GetQualifiedLoanProducts(applicant);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError("Failed to retrieve data from Qualified Loan Products for applicant, error {e}", e);
+                //delete the applicant data if failed
+                _context.LoanApplicants.Remove(applicant);
+                await _context.SaveChangesAsync();
+                return Problem("Unfortunately, the system has failed to process your data. Please try again.");
+            }
         }
     }
 }

@@ -5,13 +5,18 @@ using System.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection.Metadata;
 
+
 namespace MartinHuiLoanApplicationApi.Model
 {
     public class LoanApplicant
     {
         // Unique identifier for each applicant
         [Key]
-        public int ApplicantID { get; set; }
+        public int ApplicantID
+        {
+            get;        
+            internal set; //prevent value being set from incoming request
+        }
 
         // Applicant's first name
         [Required]
@@ -44,11 +49,14 @@ namespace MartinHuiLoanApplicationApi.Model
         public string Country { get; set; }
 
         // Applicant's postal code or ZIP code
+        // UK postcode regex: https://stackoverflow.com/questions/17012628/uk-postcode-regex
+        // Nuget Postcode checker: https://stackoverflow.com/questions/29266586/how-can-i-validate-worldwide-postal-codes-in-my-net-code
         [Required]
         public string PostalCode { get; set; }
 
         // Applicant's date of birth
         [Required]
+        [DateOfBirth(Min = 16, Max = 150)]
         public DateTime DateOfBirth { get; set; }
 
         // Applicant's annual income
@@ -89,7 +97,11 @@ namespace MartinHuiLoanApplicationApi.Model
         public int DesiredLoanTermMonths { get; set; }
 
         // Timestamp indicating when the application was submitted
-        public DateTime SubmittedDate { get; set; }
+        public DateTime SubmittedDate
+        {
+            get;
+            internal set;
+        }
 
         public LoanApplicant()
         {

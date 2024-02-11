@@ -52,73 +52,73 @@ namespace MartinHuiLoanApplicationApi.Controllers
 
         // PUT: api/LoanProducts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutLoanProduct(int id, LoanProduct loanProduct)
-        {
-            if (id != loanProduct.ProductID)
-            {
-                return BadRequest();
-            }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutLoanProduct(int id, LoanProduct loanProduct)
+        //{
+        //    if (id != loanProduct.ProductID)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _context.Entry(loanProduct).State = EntityState.Modified;
+        //    _context.Entry(loanProduct).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LoanProductExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!LoanProductExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
         // POST: api/LoanProducts
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<LoanProduct>> PostLoanProduct(LoanProduct loanProduct)
-        {
-            if (_context.LoanProducts == null)
-            {
-                return Problem("Entity set 'ApplicationDbContext.LoanProducts' is null.");
-            }
-            _context.LoanProducts.Add(loanProduct);
-            await _context.SaveChangesAsync();
+        //[HttpPost]
+        //public async Task<ActionResult<LoanProduct>> PostLoanProduct(LoanProduct loanProduct)
+        //{
+        //    if (_context.LoanProducts == null)
+        //    {
+        //        return Problem("Entity set 'ApplicationDbContext.LoanProducts' is null.");
+        //    }
+        //    _context.LoanProducts.Add(loanProduct);
+        //    await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetLoanProduct", new { id = loanProduct.ProductID }, loanProduct);
-        }
+        //    return CreatedAtAction("GetLoanProduct", new { id = loanProduct.ProductID }, loanProduct);
+        //}
 
         // DELETE: api/LoanProducts/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLoanProduct(int id)
-        {
-            if (_context.LoanProducts == null)
-            {
-                return NotFound();
-            }
-            var loanProduct = await _context.LoanProducts.FindAsync(id);
-            if (loanProduct == null)
-            {
-                return NotFound();
-            }
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> DeleteLoanProduct(int id)
+        //{
+        //    if (_context.LoanProducts == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var loanProduct = await _context.LoanProducts.FindAsync(id);
+        //    if (loanProduct == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            _context.LoanProducts.Remove(loanProduct);
-            await _context.SaveChangesAsync();
+        //    _context.LoanProducts.Remove(loanProduct);
+        //    await _context.SaveChangesAsync();
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
-        private bool LoanProductExists(int id)
-        {
-            return (_context.LoanProducts?.Any(e => e.ProductID == id)).GetValueOrDefault();
-        }
+        //private bool LoanProductExists(int id)
+        //{
+        //    return (_context.LoanProducts?.Any(e => e.ProductID == id)).GetValueOrDefault();
+        //}
     }
 }

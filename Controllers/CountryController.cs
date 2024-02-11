@@ -11,6 +11,11 @@ namespace MartinHuiLoanApplicationApi.Controllers
     public class CountryController : ControllerBase
     {
         // GET: api/<CountryController>
+        /// <summary>
+        /// Get a list of all countries data based on the list in ISO 3166
+        /// </summary>
+        /// <param name="count"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get([FromQuery] bool count)
         {
@@ -22,6 +27,11 @@ namespace MartinHuiLoanApplicationApi.Controllers
         }
 
         // GET api/<CountryController>/de
+        /// <summary>
+        /// Get a specific country data
+        /// </summary>
+        /// <param name="ISOname">Provide the two letter ISO region name of the country</param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public ActionResult<RegionInfo> Get(string ISOname)
         {
