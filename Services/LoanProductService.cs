@@ -12,7 +12,7 @@ namespace MartinHuiLoanApplicationApi.Services
             _dbContext = dbContext;
         }
 
-        internal IQueryable<LoanProduct> GetQualifiedLoanProducts(LoanApplicant applicant)
+        public IQueryable<LoanProduct> GetQualifiedLoanProducts(LoanApplicant applicant)
         {
             return from product in _dbContext.LoanProducts
                    where applicant.AnnualIncome >= product.MinimumAnnualSalary

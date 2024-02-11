@@ -10,8 +10,8 @@ namespace MartinHuiLoanApplicationApi.Model
         }
 
         // DbSet properties for each data model class
-        public DbSet<LoanProduct> LoanProducts { get; set; }
-        public DbSet<LoanApplicant> LoanApplicants { get; set; }
+        public virtual DbSet<LoanProduct> LoanProducts { get; set; }
+        public virtual DbSet<LoanApplicant> LoanApplicants { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

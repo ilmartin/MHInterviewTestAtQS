@@ -35,7 +35,7 @@ namespace MartinHuiLoanApplicationApi.Controllers
             if (_context.LoanApplicants == null)
             {
                 _logger.LogError($"LoanApplicants object from DBContext is null");
-                return Problem("Unfortunately, the system has failed to process your data. Please try again.");
+                return BadRequest("Unfortunately, the system has failed to process your data. Please try again.");
             }
             try
             {
@@ -46,11 +46,15 @@ namespace MartinHuiLoanApplicationApi.Controllers
             catch (Exception e)
             {
                 _logger.LogError("Insert Entity 'ApplicationDbContext.LoanApplicants' failed, error {e}",e);
-                return Problem("Unfortunately, the system has failed to process your data. Please try again.");
+                return BadRequest("Unfortunately, the system has failed to process your data. Please try again.");
             }
             try
             {
                 var result = _loanProductService.GetQualifiedLoanProducts(applicant);
+                if (!result.Any())
+                {
+                    return NotFound();
+                }
                 return Ok(result);
             }
             catch (Exception e)
@@ -59,7 +63,7 @@ namespace MartinHuiLoanApplicationApi.Controllers
                 //delete the applicant data if failed
                 _context.LoanApplicants.Remove(applicant);
                 await _context.SaveChangesAsync();
-                return Problem("Unfortunately, the system has failed to process your data. Please try again.");
+                return BadRequest("Unfortunately, the system has failed to process your data. Please try again.");
             }
         }
     }
