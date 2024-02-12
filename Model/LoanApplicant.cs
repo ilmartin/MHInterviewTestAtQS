@@ -1,9 +1,5 @@
 ﻿using MartinHuiLoanApplicationApi.Attributes;
-using MartinHuiLoanApplicationApi.Const;
 using System.ComponentModel.DataAnnotations;
-using System.Configuration;
-using System.Diagnostics.CodeAnalysis;
-using System.Reflection.Metadata;
 
 
 namespace MartinHuiLoanApplicationApi.Model
@@ -14,7 +10,7 @@ namespace MartinHuiLoanApplicationApi.Model
         [Key]
         public int ApplicantID
         {
-            get;        
+            get;
             internal set; //prevent value being set from incoming request
         }
 
@@ -52,6 +48,7 @@ namespace MartinHuiLoanApplicationApi.Model
         // UK postcode regex: https://stackoverflow.com/questions/17012628/uk-postcode-regex
         // Nuget Postcode checker: https://stackoverflow.com/questions/29266586/how-can-i-validate-worldwide-postal-codes-in-my-net-code
         [Required]
+        [RegularExpression(@"^[\w\s-]{1,10}$", ErrorMessage = "Invalid postal code.")]
         public string PostalCode { get; set; }
 
         // Applicant's date of birth
@@ -61,6 +58,7 @@ namespace MartinHuiLoanApplicationApi.Model
 
         // Applicant's annual income
         [Required]
+        [Range(minimum: 0.0, maximum: 9999999.99)]
         public decimal AnnualIncome { get; set; }
 
         // Applicant's email address
@@ -75,6 +73,7 @@ namespace MartinHuiLoanApplicationApi.Model
 
 
         // Applicant's gender
+        [StringRange(AcceptedValues = new string[] { "M", "F", "TM", "TF", "N", "PN" }, ErrorMessage = "The accepted value are: M (male), F (female), TM (Trans-male), TF (Trans-female), N (Netural), PN (Preferred Not to say)")]
         public string? Gender { get; set; }
 
 
@@ -84,16 +83,19 @@ namespace MartinHuiLoanApplicationApi.Model
 
 
         // Applicant's credit score
-        [Range(0,999)]
+        [Range(0, 999)]
         public int CreditScore { get; set; }
 
         // Applicant's existing debts (if any)
+        [Range(minimum: 0.0, maximum: 9999999.99)]
         public decimal ExistingDebts { get; set; }
 
         // Applicant's desired loan amount
+        [Range(minimum: 0.0, maximum: 9999999.99)]
         public decimal DesiredLoanAmount { get; set; }
 
         // Applicant's desired loan term (e.g., 12 months, 24 months)
+        [Range(0,1000)]
         public int DesiredLoanTermMonths { get; set; }
 
         // Timestamp indicating when the application was submitted
@@ -105,7 +107,7 @@ namespace MartinHuiLoanApplicationApi.Model
 
         public LoanApplicant()
         {
-                
+
         }
     }
 

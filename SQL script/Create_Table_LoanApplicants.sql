@@ -42,8 +42,8 @@ CREATE TABLE MartinHuiDatabase.dbo.LoanApplicants (
     -- [Martin reckon needed normally] Applicant's phone number
     PhoneNumber VARCHAR(20),
 
-    -- [Martin reckon needed normally] Applicant's gender
-    Gender VARCHAR(10),
+    -- [Martin reckon needed normally] Applicant's gender M (male), F (female), TM (Trans-male), TF (Trans-female), N (Netural), PN (Preferred Not to say)
+    Gender VARCHAR(2),
 
     -- [Martin reckon needed normally] Applicant's employment status (e.g., employed, self-employed, unemployed)
     EmploymentStatus VARCHAR(50),

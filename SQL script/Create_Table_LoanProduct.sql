@@ -58,7 +58,7 @@ CREATE TABLE MartinHuiDatabase.dbo.LoanProducts (
     MinimumPaymentPercentage DECIMAL(5, 2),
     
     -- Additional terms and conditions associated with the loan product [ignore to save storage for my laptop]
-    TermsAndConditions TEXT
+    TermsAndConditions varchar(max)
 );
 
 -- Create an index to increase efficency when returning the qualified product
