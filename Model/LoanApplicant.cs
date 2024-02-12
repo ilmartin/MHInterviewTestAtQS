@@ -73,7 +73,7 @@ namespace MartinHuiLoanApplicationApi.Model
 
 
         // Applicant's gender
-        [StringRange(AcceptedValues = new string[] { "M", "F", "TM", "TF", "N", "PN" }, ErrorMessage = "The accepted value are: M (male), F (female), TM (Trans-male), TF (Trans-female), N (Netural), PN (Preferred Not to say)")]
+        [StringRange(IsNullable = true, AcceptedValues = new string[] { "M", "F", "TM", "TF", "N", "PN" }, ErrorMessage = "The accepted value are: M (male), F (female), TM (Trans-male), TF (Trans-female), N (Netural), PN (Preferred Not to say)")]
         public string? Gender { get; set; }
 
 
